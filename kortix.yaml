@@ -1,0 +1,72 @@
+# Business agent grants for one project: open source governance only.
+# Kortix is open source; this file is the governance half of a project.
+# Behavior (prompt, model) lives in each agent's markdown file.
+kortix_version: 2
+default_agent: sales
+
+connectors:
+  - slug: gmail
+    name: Gmail
+    provider: composio
+    app: gmail
+    policies:
+      - match: "get_*"
+        action: always_run
+      - match: "create_draft"
+        action: always_run
+      - match: "*"
+        action: require_approval
+  - slug: crm
+    name: CRM
+    provider: http
+    base_url: "https://crm.acme.example"
+    policies:
+      - match: "get_*"
+        action: always_run
+      - match: "*"
+        action: require_approval
+  - slug: ledger
+    name: Ledger
+    provider: http
+    base_url: "https://ledger.acme.example"
+    policies:
+      - match: "get_*"
+        action: always_run
+      - match: "*"
+        action: require_approval
+  - slug: desk
+    name: Help desk
+    provider: http
+    base_url: "https://desk.acme.example"
+    policies:
+      - match: "get_*"
+        action: always_run
+      - match: "*"
+        action: require_approval
+
+agents:
+  sales:
+    file: agents/sales.md
+    connectors: [crm, gmail]
+    secrets: none
+  finance:
+    file: agents/finance.md
+    connectors: [ledger, gmail]
+    secrets: none
+  support:
+    file: agents/support.md
+    connectors: [desk, gmail]
+    secrets: none
+
+policy:
+  default_mode: risk
+
+policies:
+  - match: "gmail.send_email"
+    action: require_approval
+    conditions:
+      - arg: to
+        match: "*@acme.example"
+        negate: true
+  - match: "*.delete*"
+    action: block
