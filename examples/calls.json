@@ -1,0 +1,13 @@
+[
+  {"label": "read CRM",       "agent": "sales",   "connector": "crm",    "action": "get_contacts"},
+  {"label": "enrich lead",    "agent": "sales",   "connector": "crm",    "action": "update_contact"},
+  {"label": "draft sequence", "agent": "sales",   "connector": "gmail",  "action": "create_draft"},
+  {"label": "send internal",  "agent": "sales",   "connector": "gmail",  "action": "send_email", "arguments": {"to": "ops@acme.example"}},
+  {"label": "send external",  "agent": "sales",   "connector": "gmail",  "action": "send_email", "arguments": {"to": "buyer@northwind.example"}},
+  {"label": "read ledger",    "agent": "finance", "connector": "ledger", "action": "get_entries"},
+  {"label": "post journal",   "agent": "finance", "connector": "ledger", "action": "create_entry"},
+  {"label": "delete entry",   "agent": "finance", "connector": "ledger", "action": "delete_entry"},
+  {"label": "read ticket",    "agent": "support", "connector": "desk",   "action": "get_ticket"},
+  {"label": "issue refund",   "agent": "support", "connector": "desk",   "action": "create_refund"},
+  {"label": "sales on ledger","agent": "sales",   "connector": "ledger", "action": "get_entries"}
+]
