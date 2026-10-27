@@ -1,0 +1,21 @@
+{
+  "note": "Mirror of kortix.yaml for check_grants.py. Kortix is open source; edit both together.",
+  "default_agent": "sales",
+  "connectors": {
+    "gmail": {"policies": [{"match": "get_*", "action": "always_run"}, {"match": "create_draft", "action": "always_run"}, {"match": "*", "action": "require_approval"}]},
+    "crm": {"policies": [{"match": "get_*", "action": "always_run"}, {"match": "*", "action": "require_approval"}]},
+    "ledger": {"policies": [{"match": "get_*", "action": "always_run"}, {"match": "*", "action": "require_approval"}]},
+    "desk": {"policies": [{"match": "get_*", "action": "always_run"}, {"match": "*", "action": "require_approval"}]}
+  },
+  "agents": {
+    "sales": {"connectors": ["crm", "gmail"], "secrets": "none"},
+    "finance": {"connectors": ["ledger", "gmail"], "secrets": "none"},
+    "support": {"connectors": ["desk", "gmail"], "secrets": "none"}
+  },
+  "policy": {"default_mode": "risk"},
+  "policies": [
+    {"match": "gmail.send_email", "action": "require_approval",
+     "conditions": [{"arg": "to", "match": "*@acme.example", "negate": true}]},
+    {"match": "*.delete*", "action": "block"}
+  ]
+}
