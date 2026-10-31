@@ -2,7 +2,7 @@
 
 An open source grant matrix for the three business jobs a company usually hands an agent first, plus a small checker that resolves a queue of tool calls against it the way an open-source Kortix project does.
 
-Kortix is the open-source AI Operating System: agents, skills, connector rules and memory are files in one git repo you own. This repository is the governance half of a project that runs three roles — sales follow-up, invoice chase and ticket close — with a different reach for each, and one checker you can run without a Kortix install.
+Kortix is the open-source CompanyOS: your agents, their skills, your company memory, and every connector in one git repo you own, with the agents working on real cloud computers. This repository is the governance half of a project that runs three roles — sales follow-up, invoice chase and ticket close — with a different reach for each, and one checker you can run without a Kortix install.
 
 ## What is in here
 
@@ -91,4 +91,4 @@ The three jobs, their artifacts and the questions to answer before a pilot are w
 - [Open-source AI agents for business](https://aiagentsforbusinessguide.com/open-source-ai-agents-for-business)
 - [What AI agents for business cost](https://aiagentsforbusinessguide.com/ai-agents-for-business-pricing)
 
-The manifest keys and the connector policy actions are documented at [kortix.com/docs/project/manifest](https://kortix.com/docs/project/manifest) and [kortix.com/docs/connect/connectors](https://kortix.com/docs/connect/connectors). Kortix itself is at [kortix.com](https://kortix.com).
+The manifest keys and the connector policy actions are documented at [kortix.com/docs/project/manifest](https://kortix.com/docs/developers#kortixyaml-reference) and [kortix.com/docs/connect/connectors](https://kortix.com/docs/guide#connectors). Kortix itself is at [kortix.com](https://kortix.com).
